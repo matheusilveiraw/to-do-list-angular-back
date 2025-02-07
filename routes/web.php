@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,8 @@ Route::get('/', function () {
 Route::get('/hello', function () {
     return 'olá!';
 });
+
+
+Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout']);
+Route::post('register', [AuthController::class, 'register']);
