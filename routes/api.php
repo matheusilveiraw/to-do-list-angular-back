@@ -24,4 +24,5 @@ Route::get('/message', function () {
 });
 
 
-Route::get('/todos', [TodoController::class, 'index']);
+Route::get('/todos', [TodoController::class, 'index']); //recuperar todos to dos
+Route::post('/todos', [TodoController::class, 'store']); //cria um novo to do
