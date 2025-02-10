@@ -26,3 +26,4 @@ Route::get('/message', function () {
 
 Route::get('/todos', [TodoController::class, 'index']); //recuperar todos to dos
 Route::post('/todos', [TodoController::class, 'store']); //cria um novo to do
+Route::put('/todos/{id}', [TodoController::class, 'update']); //atualizar to do
