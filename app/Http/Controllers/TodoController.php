@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
-    public function index(): JsonResponse
+    public function recuperarToDos(): JsonResponse
     {
-        $todos = Todo::all(); 
+        $todos = Todo::all();
         return response()->json($todos);
     }
 
-    public function store(Request $request)
+    public function criarToDo(Request $request)
     {
         $validated = $request->validate([
             'descricao' => 'required|string|max:255',
@@ -31,28 +31,41 @@ class TodoController extends Controller
         return response()->json($todo, 201);
     }
 
-    public function update(Request $request, $id)
-{
-    $todo = Todo::find($id);
+    public function attToDo(Request $request, $id)
+    {
+        $todo = Todo::find($id);
 
-    // Verifica se o to-do existe
-    if (!$todo) {
-        return response()->json(['message' => 'To-do não encontrado'], 404);
+        // Verifica se o to-do existe
+        if (!$todo) {
+            return response()->json(['message' => 'To-do não encontrado'], 404);
+        }
+
+        // Validação
+        $validated = $request->validate([
+            'descricao' => 'required|string|max:255',
+            'prazo' => 'nullable|date',
+            'status' => 'required|boolean',
+        ]);
+
+        // Atualiza dados
+        $todo->descricao = $validated['descricao'];
+        $todo->prazo = $validated['prazo'];
+        $todo->status = $validated['status'];
+        $todo->save();
+
+        return response()->json($todo, 200);
     }
 
-    // Validação
-    $validated = $request->validate([
-        'descricao' => 'required|string|max:255',
-        'prazo' => 'nullable|date',
-        'status' => 'required|boolean',
-    ]);
+    public function removeToDo($id)
+    {
+        $todo = Todo::find($id);
 
-    // Atualiza dados
-    $todo->descricao = $validated['descricao'];
-    $todo->prazo = $validated['prazo'];
-    $todo->status = $validated['status'];
-    $todo->save();
+        if (!$todo) {
+            return response()->json(['message' => 'To-Do não encontrado'], 404);
+        }
 
-    return response()->json($todo, 200);
-}
+        $todo->delete();
+
+        return response()->json(['message' => 'To-Do removido com sucesso']);
+    }
 }

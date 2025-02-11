@@ -23,7 +23,7 @@ Route::get('/message', function () {
     return response()->json(['message' => 'Hello from Laravel API']);
 });
 
-
-Route::get('/todos', [TodoController::class, 'index']); //recuperar todos to dos
-Route::post('/todos', [TodoController::class, 'store']); //cria um novo to do
-Route::put('/todos/{id}', [TodoController::class, 'update']); //atualizar to do
+Route::get('/todos', [TodoController::class, 'recuperarToDos']); 
+Route::post('/todos', [TodoController::class, 'criarToDo']); 
+Route::put('/todos/{id}', [TodoController::class, 'attToDo']); 
+Route::delete('/todos/{id}', [TodoController::class, 'removeToDo']); 
