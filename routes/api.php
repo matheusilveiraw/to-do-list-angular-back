@@ -20,10 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/message', function () {
-    return response()->json(['message' => 'Hello from Laravel API']);
+    return response()->json(['message' => 'Matheus vindo do backend']);
 });
 
-Route::get('/todos', [TodoController::class, 'recuperarToDos']); 
-Route::post('/todos', [TodoController::class, 'criarToDo']); 
-Route::put('/todos/{id}', [TodoController::class, 'attToDo']); 
-Route::delete('/todos/{id}', [TodoController::class, 'removeToDo']); 
+Route::get('/rtodos', [TodoController::class, 'recuperarToDos']); 
+Route::post('/ctodo', [TodoController::class, 'criarToDo']); 
+Route::put('/atttodo/{id}', [TodoController::class, 'attToDo']); 
+Route::delete('/rtodo/{id}', [TodoController::class, 'removeToDo']); 
