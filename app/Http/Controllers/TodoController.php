@@ -18,13 +18,11 @@ class TodoController extends Controller
     {
         $validated = $request->validate([
             'descricao' => 'required|string|max:255',
-            'prazo' => 'required|date',
             'status' => 'required|boolean',
         ]);
 
         $todo = Todo::create([
             'descricao' => $validated['descricao'],
-            'prazo' => $validated['prazo'],
             'status' => $validated['status'],
         ]);
 
@@ -43,13 +41,11 @@ class TodoController extends Controller
         // Validação
         $validated = $request->validate([
             'descricao' => 'required|string|max:255',
-            'prazo' => 'nullable|date',
             'status' => 'required|boolean',
         ]);
 
         // Atualiza dados
         $todo->descricao = $validated['descricao'];
-        $todo->prazo = $validated['prazo'];
         $todo->status = $validated['status'];
         $todo->save();
 
