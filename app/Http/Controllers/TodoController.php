@@ -11,7 +11,19 @@ class TodoController extends Controller
     public function recuperarToDos(): JsonResponse
     {
         $todos = Todo::all();
+        
         return response()->json($todos);
+    }
+
+
+    public function recuperarToDoPorId($id) { 
+        $todo = Todo::find($id);
+
+        if (!$todo) {
+            return response()->json(['error' => 'To-Do não encontrado'], 404);
+        }
+
+        return response()->json($todo);
     }
 
     public function criarToDo(Request $request)
