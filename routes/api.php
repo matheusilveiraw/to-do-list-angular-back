@@ -28,3 +28,4 @@ Route::post('/ctodo', [TodoController::class, 'criarToDo']);
 Route::put('/atttodo/{id}', [TodoController::class, 'attToDo']); 
 Route::delete('/rtodo/{id}', [TodoController::class, 'removeToDo']); 
 Route::get('/rtodoporid/{id}', [TodoController::class, 'recuperarToDoPorId']); 
+Route::post('/ftodo/{id}', [TodoController::class, 'finalizarToDo']); 

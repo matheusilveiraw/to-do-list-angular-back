@@ -73,4 +73,18 @@ class TodoController extends Controller
 
         return response()->json(['message' => 'To-Do removido com sucesso']);
     }
+
+    public function finalizarToDo($id)
+    {
+        $todo = Todo::find($id);
+
+        if (!$todo) {
+            return response()->json(['message' => 'To-do não encontrado'], 404);
+        }
+
+        $todo->status = 1;
+        $todo->save();
+
+        return response()->json(['message' => 'To-Do finalizado com sucesso']);
+    }
 }
