@@ -42,43 +42,45 @@ Este é um projeto de **To-Do List** desenvolvido utilizando **Laravel (PHP) no 
 
 2. Instale as dependências:
 
-    ```bash
+```
     composer install
-    ```
+```
 
 3. Instale as dependências:
 
 Configure o banco de dados no arquivo .env e execute as migrações:
 
-    ```bash
+```
     php artisan migrate
-    ```
+```  
 
 3. Inicie o servidor:
 
-    ```bash
+```
     php artisan serve
-    ```
+```  
 
 Com isso o backend deve estar rodando.
 
 ### Frontend  
 1. Clone o repositório:  
+
    ```bash
    git clone https://github.com/matheusilveiraw/to-do-list-angular-front
    cd seu-repositorio
 
 2. Acesse a pasta do frontend e instale as dependências:
-
-    ```bash
+ 
+```
     npm install
-    ```
+```  
 
-2. Inicie o servidor Angular:
+3. Inicie o servidor Angular:
 
 Configure o banco de dados no arquivo .env e execute as migrações:
 
-    ```bash
+```
     ng serve
-    ```
+```  
+    
 Com isso o backend deve estar rodando em http://localhost:4200.
