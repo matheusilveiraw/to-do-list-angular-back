@@ -19,9 +19,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/rtodos', [TodoController::class, 'recuperarToDos']); 
-Route::post('/ctodo', [TodoController::class, 'criarToDo']); 
-Route::put('/atttodo/{id}', [TodoController::class, 'attToDo']); 
-Route::delete('/rtodo/{id}', [TodoController::class, 'removeToDo']); 
-Route::get('/rtodoporid/{id}', [TodoController::class, 'recuperarToDoPorId']); 
-Route::post('/ftodo/{id}', [TodoController::class, 'finalizarToDo']); 
+Route::get('/todos', [TodoController::class, 'recuperarToDos']); 
+
+Route::post('/todos', [TodoController::class, 'criarToDo']); 
+
+Route::put('/todos/{id}', [TodoController::class, 'attToDo']); 
+
+Route::delete('/todos/{id}', [TodoController::class, 'removeToDo']); 
+
+Route::get('/todos/{id}', [TodoController::class, 'recuperarToDoPorId']); 
+
+Route::put('/todos/{id}/finalizar', [TodoController::class, 'finalizarToDo']); 
