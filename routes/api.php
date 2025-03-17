@@ -19,10 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/message', function () {
-    return response()->json(['message' => 'Matheus vindo do backend']);
-});
-
 Route::get('/rtodos', [TodoController::class, 'recuperarToDos']); 
 Route::post('/ctodo', [TodoController::class, 'criarToDo']); 
 Route::put('/atttodo/{id}', [TodoController::class, 'attToDo']); 
